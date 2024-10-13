@@ -1,0 +1,56 @@
+.content {
+  background-color: #f0f4f8; 
+  color: black; 
+}
+
+.cabecalho {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.card-container {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  gap: 20px; 
+  padding: 20px; 
+}
+
+ion-card {
+  width: 40%; 
+  aspect-ratio: 1; 
+}
+
+
+.input_escrever {
+  width: 80%; 
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.formulario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pagina-inicial {
+  text-align: center;
+  margin-top: 20px;
+}
+.footer {
+  background-color: #1e1e1e; 
+  color: #ffffff; 
+  text-align: center; 
+  padding: 15px 0;
+  margin-top: 20px;
+  border-top: 2px solid #f39c12; 
+  position: relative; 
+  width: 100%; 
+  font-size: 14px; 
+}
+
+.footer p {
+  margin: 0; 
+}
