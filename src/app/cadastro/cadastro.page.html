@@ -34,39 +34,34 @@
 <ion-content id="main-content">
   <div class="container">
     <form (submit)="cadastrar()">
-      <!-- Campo Nome Completo -->
+      
       <ion-item class="input-item">
         <ion-label position="floating">Nome Completo</ion-label>
         <ion-input type="text" [(ngModel)]="nomeCompleto" name="nomeCompleto" required></ion-input>
         <ion-icon name="person-outline" slot="end"></ion-icon>
       </ion-item>
 
-      <!-- Campo Email -->
       <ion-item class="input-item">
         <ion-label position="floating">Email</ion-label>
         <ion-input type="email" [(ngModel)]="email" name="email" required></ion-input>
         <ion-icon name="mail-outline" slot="end"></ion-icon>
       </ion-item>
 
-      <!-- Campo Senha -->
       <ion-item class="input-item">
         <ion-label position="floating">Senha</ion-label>
         <ion-input type="password" [(ngModel)]="senha" name="senha" required></ion-input>
         <ion-icon name="lock-closed-outline" slot="end"></ion-icon>
       </ion-item>
 
-      <!-- Campo Confirme sua Senha -->
       <ion-item class="input-item">
         <ion-label position="floating">Confirme sua Senha</ion-label>
         <ion-input type="password" [(ngModel)]="confirmarSenha" name="confirmarSenha" required></ion-input>
         <ion-icon name="lock-closed-outline" slot="end"></ion-icon>
       </ion-item>
 
-      <!-- Botão de Cadastrar -->
       <ion-button expand="full" type="submit" class="submit-btn">Cadastrar</ion-button>
     </form>
 
-    <!-- Link para login -->
     <p>Já tem uma conta? <a (click)="goToLogin()">Clique aqui para fazer login</a></p>
   </div>
   

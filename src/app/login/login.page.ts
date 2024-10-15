@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service'; // Importar o AuthService
 
 @Component({
   selector: 'app-login',
@@ -7,18 +7,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  email?: string;
-  senha?: string;
+  email: string = '';
+  password: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   login() {
-    console.log('Email:', this.email);
-    console.log('Senha:', this.senha);
-    this.router.navigate(['/home']);
+    this.authService.login(this.email, this.password).catch((error) => {
+      console.error('Erro ao fazer login:', error);
+    });
   }
 
-  goToCadastro() {
-    this.router.navigate(['/cadastro']);
+  loginWithGoogle() {
+    this.authService.loginWithGoogle().catch((error) => {
+      console.error('Erro ao fazer login com Google:', error);
+    });
   }
 }
