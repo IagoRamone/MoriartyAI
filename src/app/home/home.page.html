@@ -46,42 +46,48 @@
       <br>
       <!-- Lista de Sugestões -->
       <div class="card-container">
-        <ion-card color="dark">
+        <ion-card color="dark" (click)="enviarMensagemDoCard('Planeje um dia pra cuidar da mente')">
           <ion-card-header>
             <ion-card-title>Planeje um dia pra cuidar da mente</ion-card-title>
           </ion-card-header>
         </ion-card>
-  
-        <ion-card color="dark">
+      
+        <ion-card color="dark" (click)="enviarMensagemDoCard('Como melhorar o dia')">
           <ion-card-header>
             <ion-card-title>Como melhorar o dia</ion-card-title>
           </ion-card-header>
         </ion-card>
-  
-        <ion-card color="dark">
+      
+        <ion-card color="dark" (click)="enviarMensagemDoCard('Crie uma receita')">
           <ion-card-header>
             <ion-card-title>Crie uma receita</ion-card-title>
           </ion-card-header>
         </ion-card>
-  
-        <ion-card color="dark">
+      
+        <ion-card color="dark" (click)="enviarMensagemDoCard('Escreva um script em Python')">
           <ion-card-header>
             <ion-card-title>Escreva um script em Python</ion-card-title>
           </ion-card-header>
         </ion-card>
-      </div>
-    </div>
+      </div>      
   
     <div #listaChat class="lista_chat"></div>
   
-    <form #formulario class="formulario" (submit)="enviarMensagem($event)">
-      <input type="text" class="input_escrever" placeholder="Digite sua mensagem..." />
-      <ion-button expand="full" color="primary" (click)="enviarMensagem($event)">
+    <form #formulario (submit)="enviarMensagem($event)">
+      <ion-input 
+        type="text" 
+        [(ngModel)]="mensagemUsuario" 
+        name="mensagemUsuario"
+        placeholder="Digite sua mensagem..." 
+        required 
+      ></ion-input>
+      <ion-button expand="full" color="primary" type="submit">
         Enviar
       </ion-button>
     </form>
+
     <footer class="footer">
       <p>copyright &copy; 2024 Moriarty. Todos os direitos reservados.</p>
     </footer>    
-  </ion-content>
+  
   

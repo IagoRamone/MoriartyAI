@@ -14,10 +14,29 @@
   gap: 20px; 
   padding: 20px; 
 }
+.card-container {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  gap: 20px; 
+  padding: 20px; 
+}
 
 ion-card {
   width: 40%; 
   aspect-ratio: 1; 
+  transition: transform 0.2s; 
+  cursor: pointer; 
+  border-radius: 10px; 
+
+ion-card:hover {
+  transform: scale(1.05); 
+}
+
+ion-card-title {
+  font-size: 1.2em; 
+  font-weight: bold; 
+  text-align: center;
 }
 
 
@@ -53,4 +72,38 @@ ion-card {
 
 .footer p {
   margin: 0; 
+}
+.mensagem {
+  margin: 10px 0;
+}
+
+.conteudo_mensagem {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 70%;
+  word-wrap: break-word; 
+}
+
+.usuario {
+  background-color: #007bff; 
+  color: white;
+  align-self: flex-end; 
+}
+
+.api {
+  background-color: #f1f1f1; 
+  color: black;
+  align-self: flex-start;
+}
+
+.carregamento {
+  
+  text-align: center;
+  color: grey;
+}
+.lista-chat {
+  display: flex;
+  flex-direction: column;
+}
 }
