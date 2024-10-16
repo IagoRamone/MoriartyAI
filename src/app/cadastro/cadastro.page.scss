@@ -73,3 +73,69 @@ ion-content {
 .footer p {
   margin: 0; 
 }
+
+  
+/*Menu*/
+.custom-menu {
+  --background: #f9f9f9;
+}
+
+.custom-menu ion-item {
+  --background: transparent; 
+  --color: #333333;
+}
+
+.custom-menu ion-item:hover {
+  --background: #e0e0e0; 
+}
+
+.custom-menu ion-icon {
+  --color: #3880ff; 
+}
+
+.custom-menu ion-toolbar {
+  --background: #3880ff; 
+  --color: white;
+}
+
+ion-menu-button {
+  --color: white; 
+}
+
+ion-menu-button:hover {
+  --color: #ffd700; 
+  transition: color 0.3s ease;
+} 
+
+ 
+/*Menu*/
+.custom-menu {
+  --background: #f9f9f9;
+}
+
+.custom-menu ion-item {
+  --background: transparent; 
+  --color: #333333;
+}
+
+.custom-menu ion-item:hover {
+  --background: #e0e0e0; 
+}
+
+.custom-menu ion-icon {
+  --color: #3880ff; 
+}
+
+ion-toolbar {
+  --background: #3880ff; 
+  --color: white;
+}
+
+ion-menu-button {
+  --color: white; 
+}
+
+ion-menu-button:hover {
+  --color: #ffd700; 
+  transition: color 0.3s ease;
+} 

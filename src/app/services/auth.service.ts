@@ -17,7 +17,7 @@ export class AuthService {
       console.log('User signed in:', userCredential.user);
     } catch (error) {
       console.error('Error during sign in:', error);
-      throw error; // Propaga o erro para que o componente possa tratar
+      throw error; 
     }
   }
 

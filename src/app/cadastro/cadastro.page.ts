@@ -14,12 +14,10 @@ export class CadastroPage {
 
   constructor(private router: Router) {}
 
-  // Método para redirecionar para a página de login
   goToLogin() {
     this.router.navigate(['/login']);
   }
 
-  // Método para submeter o formulário de cadastro
   cadastrar() {
     if (this.senha === this.confirmarSenha) {
       console.log('Cadastro realizado com sucesso:', {
