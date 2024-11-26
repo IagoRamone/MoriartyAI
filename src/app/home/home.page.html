@@ -69,7 +69,7 @@
   
     <div #listaChat class="lista_chat"></div>
   
-    <form #formulario (submit)="enviarMensagem($event)">
+    <form #formulario (submit)="enviarMensagem($event)" class="input-container">
       <ion-input 
         type="text" 
         [(ngModel)]="mensagemUsuario" 
@@ -77,11 +77,15 @@
         placeholder="Digite sua mensagem..." 
         required 
       ></ion-input>
-      <ion-button expand="full" color="primary" type="submit">
-        Enviar
+      <ion-button class="microfone" (click)="iniciarVoz()">
+        <ion-icon name="mic"></ion-icon>
       </ion-button>
     </form>
 
+    <ion-button expand="full" color="primary" type="submit" class="enviar">
+      Enviar
+    </ion-button>
+    
     <footer class="footer">
       <p>copyright &copy; 2024 Moriarty. Todos os direitos reservados.</p>
     </footer>    
