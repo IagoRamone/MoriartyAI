@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { AuthService } from '../services/auth.service'; // Importando o AuthService
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,9 @@ export class HomePage implements AfterViewInit {
 
   speechRecognition!: SpeechRecognition;
 
-  constructor(private cdr: ChangeDetectorRef) {
+  userName: string = ''; // Variável para armazenar o nome do usuário
+
+  constructor(private cdr: ChangeDetectorRef, private authService: AuthService) {
     if ('webkitSpeechRecognition' in window) {
       this.speechRecognition = new (window as any).webkitSpeechRecognition();
       this.speechRecognition.lang = 'pt-BR';
@@ -35,6 +38,11 @@ export class HomePage implements AfterViewInit {
     } else {
       console.warn('Web Speech API não é suportada neste navegador.');
     }
+
+    // Assinando o fluxo de usuário para atualizar o nome do usuário
+    this.authService.user$.subscribe((user) => {
+      this.userName = this.authService.getUserName(); // Obtém o nome do usuário ou 'Visitante'
+    });
   }
 
   ngAfterViewInit() {

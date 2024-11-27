@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -24,14 +24,25 @@ export class FirebaseService {
     });
   }
 
+  async register(email: string, password: string) {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+      console.log('User registered:', userCredential.user);
+      return userCredential.user;
+    } catch (error) {
+      console.error('Error registering user:', error);
+      throw error;
+    }
+  }
+
   async login(email: string, password: string) {
     try {
       const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
       console.log('User logged in:', userCredential.user);
-      return userCredential.user; 
+      return userCredential.user;
     } catch (error) {
       console.error('Error logging in:', error);
-      throw error; 
+      throw error;
     }
   }
 
@@ -44,5 +55,4 @@ export class FirebaseService {
       throw error;
     }
   }
-
 }

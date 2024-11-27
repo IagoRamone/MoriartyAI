@@ -1,16 +1,21 @@
-// src/app/services/auth.service.ts
-
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
+import { BehaviorSubject } from 'rxjs'; 
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private afAuth: AngularFireAuth) {}
+  private userSubject = new BehaviorSubject<firebase.User | null>(null);
+  user$ = this.userSubject.asObservable(); 
 
-  // Login com email e senha
+  constructor(private afAuth: AngularFireAuth) {
+    this.afAuth.onAuthStateChanged((user) => {
+      this.userSubject.next(user); 
+    });
+  }
+
   async login(email: string, password: string) {
     try {
       const userCredential = await this.afAuth.signInWithEmailAndPassword(email, password);
@@ -21,7 +26,6 @@ export class AuthService {
     }
   }
 
-  // Logout
   async logout() {
     try {
       await this.afAuth.signOut();
@@ -32,7 +36,6 @@ export class AuthService {
     }
   }
 
-  // Login com Google
   async loginWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
     try {
@@ -42,5 +45,10 @@ export class AuthService {
       console.error('Error during Google sign in:', error);
       throw error;
     }
+  }
+
+  getUserName(): string {
+    const user = this.userSubject.value;
+    return user ? user.displayName || 'Usuário' : 'Visitante';
   }
 }

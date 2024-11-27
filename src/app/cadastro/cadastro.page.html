@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button class="custom-menu-button"></ion-menu-button>
     </ion-buttons>
-    <ion-title>Login</ion-title>
+    <ion-title>Cadastro</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -23,11 +23,11 @@
       <ion-item [routerLink]="['/sobre']">
         <ion-icon slot="start" name="information-circle"></ion-icon>
         <ion-label>Sobre</ion-label>
-        </ion-item>
-        <ion-item [routerLink]="['/configuracoes']">
-          <ion-icon slot="start" name="information-circle"></ion-icon>
-          <ion-label>Configurações</ion-label>
-          </ion-item>
+      </ion-item>
+      <ion-item [routerLink]="['/configuracoes']">
+        <ion-icon slot="start" name="settings"></ion-icon>
+        <ion-label>Configurações</ion-label>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>
@@ -35,7 +35,6 @@
 <ion-content id="main-content">
   <div class="container">
     <form (submit)="cadastrar()">
-      
       <ion-item class="input-item">
         <ion-label position="floating">Nome Completo</ion-label>
         <ion-input type="text" [(ngModel)]="nomeCompleto" name="nomeCompleto" required></ion-input>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FirebaseService } from '../services/firebase.service'; 
 
 @Component({
   selector: 'app-cadastro',
@@ -12,20 +13,24 @@ export class CadastroPage {
   senha: string = '';
   confirmarSenha: string = '';
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private firebaseService: FirebaseService  
+  ) {}
 
   goToLogin() {
     this.router.navigate(['/login']);
   }
 
-  cadastrar() {
+  async cadastrar() {
     if (this.senha === this.confirmarSenha) {
-      console.log('Cadastro realizado com sucesso:', {
-        nomeCompleto: this.nomeCompleto,
-        email: this.email,
-        senha: this.senha,
-      });
-      this.router.navigate(['/home']);
+      try {
+        await this.firebaseService.register(this.email, this.senha);
+        console.log('Cadastro realizado com sucesso');
+        this.router.navigate(['/home']);
+      } catch (error) {
+        console.log('Erro ao cadastrar usuário:', error);
+      }
     } else {
       console.log('Erro: As senhas não coincidem!');
     }
