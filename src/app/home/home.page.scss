@@ -76,7 +76,6 @@ ion-button.microfone ion-icon {
   display: flex;
   justify-content: center; 
   align-items: center;  
-  margin-top: 10px;
   width: 100%;        
 }
 
@@ -85,9 +84,10 @@ ion-button.microfone:hover {
 }
 
 ion-button.enviar {
-  width: 150px;
-  padding: 10px;
+  width: 95px;
+  height: 45px;
   font-size: 1em;
+  margin-bottom: 14px;
   color: white;
   border-radius: 8px;
   cursor: pointer;
@@ -136,19 +136,29 @@ ion-button.enviar:hover {
   word-wrap: break-word;
 }
 
-.usuario {
-  background-color: #007bff;
-  color: white;
-  align-self: flex-end;
-}
 
-.api {
-  background-color: #f1f1f1;
-  color: black;
+.mensagem-usuario {
+  background-color: #d1e7dd; 
+  color: #0f5132;
+  text-align: left;
+  border-radius: 10px 10px 10px 0;
+  padding: 10px;
+  margin: 5px 0;
   align-self: flex-start;
 }
 
+.mensagem-chat {
+  background-color: #f8d7da; 
+  color: #842029; 
+  text-align: right;
+  border-radius: 10px 10px 0 10px;
+  padding: 10px;
+  margin: 5px 0;
+  align-self: flex-end;
+}
+
 .carregamento {
+  opacity: 0.7;
   text-align: center;
   color: grey;
 }
@@ -158,7 +168,6 @@ ion-button.enviar:hover {
   flex-direction: column;
 }
 
-/* Menu */
 .custom-menu {
   --background: #f9f9f9;
 }
