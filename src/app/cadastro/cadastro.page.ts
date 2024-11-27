@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FirebaseService } from '../services/firebase.service'; 
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -15,7 +15,7 @@ export class CadastroPage {
 
   constructor(
     private router: Router,
-    private firebaseService: FirebaseService  
+    private firebaseService: FirebaseService
   ) {}
 
   goToLogin() {
@@ -25,7 +25,8 @@ export class CadastroPage {
   async cadastrar() {
     if (this.senha === this.confirmarSenha) {
       try {
-        await this.firebaseService.register(this.email, this.senha);
+        
+        await this.firebaseService.register(this.email, this.senha, this.nomeCompleto);
         console.log('Cadastro realizado com sucesso');
         this.router.navigate(['/home']);
       } catch (error) {

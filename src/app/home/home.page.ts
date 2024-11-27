@@ -1,12 +1,12 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { AuthService } from '../services/auth.service'; // Importando o AuthService
+import { AuthService } from '../services/auth.service'; 
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements AfterViewInit {  
+export class HomePage implements AfterViewInit {
   @ViewChild('listaChat', { static: false }) listaChat!: ElementRef;
   @ViewChild('formulario', { static: false }) formulario!: ElementRef;
 
@@ -16,7 +16,7 @@ export class HomePage implements AfterViewInit {
 
   speechRecognition!: SpeechRecognition;
 
-  userName: string = ''; // Variável para armazenar o nome do usuário
+  userName: string = ''; 
 
   constructor(private cdr: ChangeDetectorRef, private authService: AuthService) {
     if ('webkitSpeechRecognition' in window) {
@@ -39,9 +39,8 @@ export class HomePage implements AfterViewInit {
       console.warn('Web Speech API não é suportada neste navegador.');
     }
 
-    // Assinando o fluxo de usuário para atualizar o nome do usuário
     this.authService.user$.subscribe((user) => {
-      this.userName = this.authService.getUserName(); // Obtém o nome do usuário ou 'Visitante'
+      this.userName = this.authService.getUserName(); 
     });
   }
 
@@ -51,6 +50,12 @@ export class HomePage implements AfterViewInit {
     if (!this.listaChat) {
       console.error('Elemento listaChat não foi inicializado.');
     }
+  }
+
+  // Método para deslogar o usuário
+  logout() {
+    this.authService.logout();  // Supondo que o AuthService tenha um método logout()
+    console.log('Usuário deslogado');
   }
 
   mensagemCriada(conteudo: string, ...nomeClasse: string[]) {

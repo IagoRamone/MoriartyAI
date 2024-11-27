@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -9,6 +10,7 @@ import { environment } from '../../environments/environment';
 export class FirebaseService {
   private app = initializeApp(environment.firebaseConfig);
   private auth = getAuth(this.app);
+  private db = getFirestore(this.app);  
 
   constructor() {
     this.checkAuthState();
@@ -24,11 +26,22 @@ export class FirebaseService {
     });
   }
 
-  async register(email: string, password: string) {
+  async register(email: string, password: string, nomeCompleto: string) {
     try {
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
-      console.log('User registered:', userCredential.user);
-      return userCredential.user;
+      const user = userCredential.user;
+
+       if (user) {
+        await setDoc(doc(this.db, 'usuarios', user.uid), {
+          nomeCompleto: nomeCompleto,  
+          email: email,  
+          uid: user.uid, 
+        });
+
+        console.log('User saved in Firestore');
+      }
+      
+      return user;  
     } catch (error) {
       console.error('Error registering user:', error);
       throw error;

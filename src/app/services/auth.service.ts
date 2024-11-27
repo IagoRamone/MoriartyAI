@@ -49,6 +49,9 @@ export class AuthService {
 
   getUserName(): string {
     const user = this.userSubject.value;
-    return user ? user.displayName || 'Usuário' : 'Visitante';
+    if (user) {
+      return user.displayName || user.email || 'Visitante';
+    }
+    return 'Visitante'; 
   }
 }
